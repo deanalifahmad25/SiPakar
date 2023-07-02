@@ -104,6 +104,9 @@
                     <button class="btn btn-fill text-white d-block w-100" type="submit">
                         Daftar
                     </button>
+                    <a class="btn btn-border btn-google-login d-block w-100" href="#">
+                        <img src="{{ asset('./assets/images/ic_google.svg') }}" class="icon" alt=""> Daftar dengan Google
+                    </a>
                 </form>
 
                 <p class="text-center bottom-caption">
