@@ -17,7 +17,15 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main.css') }}" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased">
@@ -32,7 +40,7 @@
             style="font-family: 'Poppins', sans-serif">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="/">
-                    <img style="width: 140px; padding-top: 10px;" src="{{ asset('./assets/images/Logo SiPakar.png')}}"
+                    <img style="width: 140px; padding-top: 10px;" src="{{ asset('./assets/images/Logo SiPakar.png') }}"
                         alt="" />
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal"
@@ -46,8 +54,8 @@
                         <div class="modal-content bg-white border-0">
                             <div class="modal-header border-0" style="padding: 2rem; padding-bottom: 0">
                                 <a href="/" class="modal-title" id="targetModalLabel">
-                                    <img style="width: 140px; margin-top: 0.5rem" src="{{ asset('./assets/images/Logo SiPakar.png')}}"
-                                        alt="" />
+                                    <img style="width: 140px; margin-top: 0.5rem"
+                                        src="{{ asset('./assets/images/Logo SiPakar.png') }}" alt="" />
                                 </a>
                                 <button type="button" class="close btn-close text-white" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
@@ -55,15 +63,13 @@
                             <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
                                     <li class="nav-item active position-relative">
-                                        <a href="/" class="nav-link main" style="color: #0D63F5;"
-                                            >Beranda</a>
+                                        <a href="/" class="nav-link main" style="color: #0D63F5;">Beranda</a>
                                     </li>
                                     <li class="nav-item position-relative">
                                         <a href="{{ route('panduan') }}" class="nav-link">Panduan</a>
                                     </li>
                                     <li class="nav-item position-relative">
-                                        <a href="https://deanalifahmad.github.io/" class="nav-link"
-                                            >Kontak</a>
+                                        <a href="https://deanalifahmad.github.io/" class="nav-link">Kontak</a>
                                     </li>
                                     <li class="nav-item position-relative">
                                         <a href="#about" class="nav-link">Tentang Kami</a>
@@ -81,7 +87,7 @@
                                     </div>
                                 @endauth
                             @endif
-                            
+
                         </div>
                     </div>
                 </div>
@@ -103,14 +109,46 @@
                     </ul>
                     @if (Route::has('login'))
                         @auth
-                            <div class="btn-group btn">
-                                <img src="{{ asset('assets/images/gallery 1.png') }}" alt="" style="width: 50px; height: 50px; border-radius: 99px !important;" data-bs-toggle="dropdown" aria-expanded="false">
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="/">Diagnosa</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
-                                </ul>
+                            <div class="d-flex align-items-center justify-content-end gap-4">
+                                <x-dropdown align="right" width="48">
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                            <div>Hai {{ Auth::user()->name }}!</div>
+
+                                            <div class="ml-1">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Dashboard') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('profile.edit')">
+                                            {{ __('Profil') }}
+                                        </x-dropdown-link>
+
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+
+                                            <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                            this.closest('form').submit();">
+                                                {{ __('Logout') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
+                                <img src="{{ asset('assets/images/avatar.jpg') }}"
+                                    alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
                             </div>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-fill text-white">Masuk</a>
@@ -169,14 +207,15 @@
                 <div class="right-column d-flex justify-content-center justify-content-lg-start text-center pe-0">
                     <img class="position-absolute d-lg-block d-none" style="margin-top: 2rem; right: 0"
                         src="{{ asset('./assets/images/header image.png') }}" alt="" />
-                    <img class="position-absolute d-lg-block d-none hero-right" src="{{ asset('./assets/images/hero image.png') }}"
-                        alt="" />
+                    <img class="position-absolute d-lg-block d-none hero-right"
+                        src="{{ asset('./assets/images/hero image.png') }}" alt="" />
                     <div class="d-flex align-items-end card-outer">
                         <div class="mx-auto d-flex flex-wrap align-items-center">
                             <div class="card border-0 position-relative d-flex flex-column">
                                 <div class="d-flex align-items-center" style="margin-bottom: 1.25rem">
                                     <div>
-                                        <img style="margin-right: 1rem" src="{{ asset('./assets/images/icon sipakar 70x70.png') }}"
+                                        <img style="margin-right: 1rem"
+                                            src="{{ asset('./assets/images/icon sipakar 70x70.png') }}"
                                             alt="" />
                                     </div>
                                     <div class="text-start">
@@ -385,7 +424,8 @@
                 <div class="col-md-6 mt-md-0 mt-3 address">
                     <div class="logo font-red-hat-display">
                         <a href="#">
-                            <img style="width: 160px;" src="{{ asset('./assets/images/Logo SiPakar -2-.png') }}" alt="" />
+                            <img style="width: 160px;" src="{{ asset('./assets/images/Logo SiPakar -2-.png') }}"
+                                alt="" />
                         </a>
                     </div>
                     <div class="social-media">
@@ -446,6 +486,13 @@
     </footer>
 
     {{-- scripts --}}
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

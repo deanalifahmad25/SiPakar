@@ -7,7 +7,7 @@
         <div class="information d-flex flex-column gap-5">
             <div class="row px-1 mb-2 gap-5">
                 <div class="col-xl-4 col-12 card debit">
-                    <img src="{{ asset('assets/images/ic_card.svg' )}}" alt="Debit" width="54px" />
+                    <img src="{{ asset('assets/images/ic_card.svg') }}" alt="Debit" width="54px" />
                     <p class="number">{{ Auth::user()->email }}</p>
                     <div>
                         <p class="fw-semibold m-0">{{ Auth::user()->name }}</p>
@@ -52,7 +52,8 @@
                         </div>
                         <div class="d-flex flex-row gap-3">
                             <div class="icon-history">
-                                <img src="{{ asset('assets/images/ic_receive_act.svg') }}" width="32" height="32" />
+                                <img src="{{ asset('assets/images/ic_receive_act.svg') }}" width="32"
+                                    height="32" />
                             </div>
                             <div class="trans-history flex-fill">
                                 <div>
@@ -75,6 +76,47 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="row px-1">
+                <h5>Riwayat Diagnosa</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-borderless ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Lorem</th>
+                                <th scope="col">Ipsum</th>
+                                <th scope="col">Dolor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Sit</td>
+                                <td>Amet</td>
+                                <td>Consectetur</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Adipisicing</td>
+                                <td>Elit</td>
+                                <td>Sint</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Hic</td>
+                                <td>Fugiat</td>
+                                <td>Temporibus</td>
+                            </tr>
+                        </tbody>
+    
+                        <caption>
+                            Captions of the table
+                        </caption>
+    
+                    </table>
                 </div>
             </div>
         </div>

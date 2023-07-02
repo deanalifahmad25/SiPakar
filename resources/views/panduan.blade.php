@@ -17,7 +17,15 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main.css') }}" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased">
@@ -64,7 +72,7 @@
                                         <a href="https://deanalifahmad.github.io/" class="nav-link">Kontak</a>
                                     </li>
                                     <li class="nav-item position-relative">
-                                        <a href="#about" class="nav-link">Tentang Kami</a>
+                                        <a href="/" class="nav-link">Tentang Kami</a>
                                     </li>
                                 </ul>
                             </div>
@@ -96,23 +104,51 @@
                             <a href="https://deanalifahmad.github.io/" class="nav-link" href="#">Kontak</a>
                         </li>
                         <li class="nav-item position-relative">
-                            <a href="#about" class="nav-link">Tentang Kami</a>
+                            <a href="/" class="nav-link">Tentang Kami</a>
                         </li>
                     </ul>
                     @if (Route::has('login'))
                         @auth
-                            <div class="btn-group btn">
-                                <img src="{{ asset('assets/images/gallery 1.png') }}" alt=""
-                                    style="width: 50px; height: 50px; border-radius: 99px !important;"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="/">Diagnosa</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
-                                </ul>
+                            <div class="d-flex align-items-center justify-content-end gap-4">
+                                <x-dropdown align="right" width="48">
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                            <div>Hai {{ Auth::user()->name }}!</div>
+
+                                            <div class="ml-1">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </div>
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <x-dropdown-link :href="route('dashboard')">
+                                            {{ __('Dashboard') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('profile.edit')">
+                                            {{ __('Profil') }}
+                                        </x-dropdown-link>
+
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+
+                                            <x-dropdown-link :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                                {{ __('Logout') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
+                                <img src="{{ asset('assets/images/avatar.jpg') }}"
+                                    alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
                             </div>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-fill text-white">Masuk</a>
@@ -138,7 +174,8 @@
             <div class="d-flex flex-lg-row flex-column align-items-center">
                 <!-- Left Column -->
                 <div class="img-hero text-center justify-content-center d-flex">
-                    <img id="hero" class="img-fluid" src="{{ asset('./assets/images/Content3-1.png') }}" alt="" />
+                    <img id="hero" class="img-fluid" src="{{ asset('./assets/images/Content3-1.png') }}"
+                        alt="" />
                 </div>
 
                 <!-- Right Column -->
@@ -287,6 +324,13 @@
     </footer>
 
     {{-- scripts --}}
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
