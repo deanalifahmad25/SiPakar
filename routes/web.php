@@ -24,12 +24,13 @@ Route::get('/panduan', function () {
 
 Route::get('/missing-page', [MissingPageController::class, 'index'])->name('missing-page');
 
+// Users
 Route::get('/success-register', function () {
     return view('layouts.success-register');
 })->middleware(['auth', 'verified'])->name('success-register');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
