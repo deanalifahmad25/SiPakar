@@ -20,7 +20,7 @@ header {
 
 header h3 {
   margin: 0;
-  color: #0d1458;
+  color: #0D63F5;
   font-weight: 700;
   line-height: 42px;
 }
@@ -58,7 +58,7 @@ header p {
   object-fit: cover;
   border-radius: 50px;
   box-sizing: border-box;
-  border: 1px solid #3547ac;
+  border: 1px solid #0D63F5;
 }
 
 .information .card {
@@ -75,7 +75,7 @@ header p {
   color: #fff;
   display: flex;
   background-size: cover;
-  background-color: #3547ac;
+  background-color: #0D63F5;
   justify-content: space-between;
   box-shadow: rgba(53, 71, 172, 0.5) 0px 20px 50px 0px;
 }
@@ -103,7 +103,7 @@ header p {
 
 .balance h2 {
   margin: 0;
-  color: #3547ac;
+  color: #0D63F5;
   font-weight: 700;
 }
 
@@ -115,7 +115,7 @@ header p {
 }
 
 .information h5 {
-  color: #0d1458;
+  color: #0D63F5;
   font-weight: 600;
   margin-bottom: 30px;
 }

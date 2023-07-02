@@ -15,37 +15,42 @@
                 <i class="icon ic-stats"></i>
                 {{ __('Dashboard') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
                 <i class="icon ic-trans"></i>
                 {{ __('Data Penyakit') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
                 <i class="icon ic-trans"></i>
                 {{ __('Data Gejala') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
                 <i class="icon ic-account"></i>
                 {{ __('Basis Informasi') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
                 <i class="icon ic-help"></i>
                 {{ __('Aturan') }}
             </x-side-link>
         </div>
         <div class="menu">
             <p>Lainnya</p>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('profile.edit')" :active="request()->routeIs('')">
                 <i class="icon ic-settings"></i>
                 {{ __('Profil') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-side-link :href="route('panduan')" :active="request()->routeIs('panduan')">
                 <i class="icon ic-msg"></i>
                 {{ __('Panduan') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                <i class="icon ic-logout"></i>
-                {{ __('Logout') }}
-            </x-side-link>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-side-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                this.closest('form').submit();">
+                    <i class="icon ic-logout"></i>
+                    {{ __('Logout') }}
+                </x-side-link>
+            </form>
         </div>
     </div>
 </nav>

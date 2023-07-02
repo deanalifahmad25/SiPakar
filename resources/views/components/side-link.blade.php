@@ -2,8 +2,8 @@
 
 @php
 $classes = ($active ?? false)
-            ? 'item-menu'
-            : 'item-menu active';
+            ? 'item-menu active'
+            : 'item-menu';
 @endphp
 
 <a {{ $attributes->merge(['class' => $classes]) }}>
