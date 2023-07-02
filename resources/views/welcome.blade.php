@@ -32,7 +32,7 @@
             style="font-family: 'Poppins', sans-serif">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="/">
-                    <img style="width: 140px; padding-top: 10px;" src="./assets/images/Logo SiPakar.png"
+                    <img style="width: 140px; padding-top: 10px;" src="{{ asset('./assets/images/Logo SiPakar.png')}}"
                         alt="" />
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal"
@@ -46,7 +46,7 @@
                         <div class="modal-content bg-white border-0">
                             <div class="modal-header border-0" style="padding: 2rem; padding-bottom: 0">
                                 <a href="/" class="modal-title" id="targetModalLabel">
-                                    <img style="width: 140px; margin-top: 0.5rem" src="./assets/images/Logo SiPakar.png"
+                                    <img style="width: 140px; margin-top: 0.5rem" src="{{ asset('./assets/images/Logo SiPakar.png')}}"
                                         alt="" />
                                 </a>
                                 <button type="button" class="close btn-close text-white" data-bs-dismiss="modal"
@@ -55,11 +55,11 @@
                             <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
                                     <li class="nav-item active position-relative">
-                                        <a href="/" class="nav-link main" style="color: #243142;"
+                                        <a href="/" class="nav-link main" style="color: #0D63F5;"
                                             >Beranda</a>
                                     </li>
                                     <li class="nav-item position-relative">
-                                        <a href="" class="nav-link">Panduan</a>
+                                        <a href="{{ route('panduan') }}" class="nav-link">Panduan</a>
                                     </li>
                                     <li class="nav-item position-relative">
                                         <a href="https://deanalifahmad.github.io/" class="nav-link"
@@ -92,7 +92,7 @@
                             <a href="/" class="nav-link main=" style="color: #0D63F5;">Beranda</a>
                         </li>
                         <li class="nav-item position-relative">
-                            <a href="" class="nav-link">Panduan</a>
+                            <a href="{{ route('panduan') }}" class="nav-link">Panduan</a>
                         </li>
                         <li class="nav-item position-relative">
                             <a href="https://deanalifahmad.github.io/" class="nav-link" href="#">Kontak</a>
@@ -168,15 +168,15 @@
                 <!-- Right Column -->
                 <div class="right-column d-flex justify-content-center justify-content-lg-start text-center pe-0">
                     <img class="position-absolute d-lg-block d-none" style="margin-top: 2rem; right: 0"
-                        src="./assets/images/header image.png" alt="" />
-                    <img class="position-absolute d-lg-block d-none hero-right" src="./assets/images/hero image.png"
+                        src="{{ asset('./assets/images/header image.png') }}" alt="" />
+                    <img class="position-absolute d-lg-block d-none hero-right" src="{{ asset('./assets/images/hero image.png') }}"
                         alt="" />
                     <div class="d-flex align-items-end card-outer">
                         <div class="mx-auto d-flex flex-wrap align-items-center">
                             <div class="card border-0 position-relative d-flex flex-column">
                                 <div class="d-flex align-items-center" style="margin-bottom: 1.25rem">
                                     <div>
-                                        <img style="margin-right: 1rem" src="./assets/images/icon sipakar 70x70.png"
+                                        <img style="margin-right: 1rem" src="{{ asset('./assets/images/icon sipakar 70x70.png') }}"
                                             alt="" />
                                     </div>
                                     <div class="text-start">
@@ -248,7 +248,7 @@
             <div class="value row mx-0 d-flex justify-content-center justify-content-md-between">
                 <div class="card">
                     <div class="card-body p-0">
-                        <img src="./assets/icons/Benefit 1.png" alt="dolar" class="img-fluid">
+                        <img src="{{ asset('./assets/icons/Benefit 1.png') }}" alt="dolar" class="img-fluid">
                         <div class="card-desc">
                             <h4 class="card-title">Gratis dan Mudah Digunakan</h4>
                             <p class="card-text">Akses informasi kesehatan gratis dan mudah untuk bantu Anda.
@@ -258,7 +258,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body p-0">
-                        <img src="./assets/icons/Benefit 2.png" alt="dolar" class="img-fluid">
+                        <img src="{{ asset('./assets/icons/Benefit 2.png') }}" alt="dolar" class="img-fluid">
                         <div class="card-desc">
                             <h4 class="card-title">Keamanan Data Pasien Terjamin</h4>
                             <p class="card-text">Privasi pasien terjamin, data aman dengan langkah keamanan ketat.
@@ -268,7 +268,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body p-0">
-                        <img src="./assets/icons/Benefit 3.png" alt="dolar" class="img-fluid">
+                        <img src="{{ asset('./assets/icons/Benefit 3.png') }}" alt="dolar" class="img-fluid">
                         <div class="card-desc">
                             <h4 class="card-title">Implementasi Teknologi Modern</h4>
                             <p class="card-text">Teknologi terkini untuk diagnosa akurat dan solusi kesehatan efektif.
@@ -304,10 +304,10 @@
                 @endif
             </div>
             <div class="row section scrolling-wrapper flex-row flex-nowrap mt-3 img-explore mx-2">
-                <img src="./assets/images/gallery 1.png" alt="image-1" class="img-fluid">
-                <img src="./assets/images/gallery 2.png" alt="image-2" class="img-fluid">
-                <img src="./assets/images/gallery 3.png" alt="image-3" class="img-fluid">
-                <img src="./assets/images/gallery 4.png" alt="image-4" class="img-fluid">
+                <img src="{{ asset('./assets/images/gallery 1.png') }}" alt="image-1" class="img-fluid">
+                <img src="{{ asset('./assets/images/gallery 2.png') }}" alt="image-2" class="img-fluid">
+                <img src="{{ asset('./assets/images/gallery 3.png') }}" alt="image-3" class="img-fluid">
+                <img src="{{ asset('./assets/images/gallery 4.png') }}" alt="image-4" class="img-fluid">
             </div>
         </div>
     </section>
@@ -372,7 +372,7 @@
                                 <a href="{{ route('login') }}" class="btn btn-started">Coba Diagnosa</a>
                             @endauth
                         @endif
-                        <a href="#" class="btn btn-story ml-3">Lainnya</a>
+                        <a href="{{ route('panduan') }}" class="btn btn-story ml-3">Lainnya</a>
                     </div>
                 </div>
             </div>
@@ -385,23 +385,23 @@
                 <div class="col-md-6 mt-md-0 mt-3 address">
                     <div class="logo font-red-hat-display">
                         <a href="#">
-                            <img style="width: 160px;" src="./assets/images/Logo SiPakar -2-.png" alt="" />
+                            <img style="width: 160px;" src="{{ asset('./assets/images/Logo SiPakar -2-.png') }}" alt="" />
                         </a>
                     </div>
                     <div class="social-media">
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/dean-alif-ahmad-bb6a9a1aa/">
                             <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/dark/bi_linkedin.svg"
                                 alt="linkedin" class="img-fluid mr-4">
                         </a>
-                        <a href="#">
+                        <a href="https://www.facebook.com/deanalif.ahmad/?locale=id_ID">
                             <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/dark/bi_facebook.svg"
                                 alt="facebook" class="img-fluid mr-4">
                         </a>
-                        <a href="#">
+                        <a href="https://twitter.com/deanalifah">
                             <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/dark/bi_twitter.svg"
                                 alt="twitter" class="img-fluid mr-4">
                         </a>
-                        <a href="#">
+                        <a href="https://www.instagram.com/deanalifahmad/">
                             <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/dark/bi_instagram.svg"
                                 alt="twitch" class="img-fluid mr-4">
                         </a>
@@ -420,13 +420,10 @@
                         </p>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!">Blog</a>
+                                <a href="https://www.alodokter.com/">Blog</a>
                             </li>
                             <li>
-                                <a href="#!">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="#!">Partnerships</a>
+                                <a href="https://goo.gl/maps/GgqeYqK8Z4f5NXUp8">Partnerships</a>
                             </li>
                         </ul>
                     </div>
@@ -436,13 +433,10 @@
                         </p>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#!">About Us</a>
+                                <a href="https://deanalifahmad.github.io/">About Us</a>
                             </li>
                             <li>
-                                <a href="#!">Careers</a>
-                            </li>
-                            <li>
-                                <a href="#!">News & Media</a>
+                                <a href="https://www.linkedin.com/in/dean-alif-ahmad-bb6a9a1aa/">Careers</a>
                             </li>
                         </ul>
                     </div>

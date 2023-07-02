@@ -16,7 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/panduan', function () {
+    return view('panduan');
+})->name('panduan');
+
+Route::get('/missing-page', [MissingPageController::class, 'index'])->name('missing-page');
+
+Route::get('/success-register', function () {
+    return view('layouts.success-register');
+})->middleware(['auth', 'verified'])->name('success-register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

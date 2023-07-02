@@ -620,7 +620,69 @@ body footer li {
 }
 /* End Footer */
 
+/* Start Panduan */
+.content-3-2 .btn:focus,
+.content-3-2 .btn:active {
+  outline: none !important;
+}
 
+.content-3-2 {
+  padding: 5rem 2rem;
+}
+
+.content-3-2 .img-hero {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.content-3-2 .right-column {
+  width: 100%;
+}
+
+.content-3-2 .title-text {
+  font: 600 1.875rem/2.25rem Poppins, sans-serif;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.025em;
+  color: #16171C;
+}
+
+.content-3-2 .title-caption {
+  font: 500 1.5rem/2rem Poppins, sans-serif;
+  text-align: start;
+  margin-bottom: 1.25rem;
+  color: #16171C;
+}
+
+.content-3-2 .circle {
+  font: 500 1.25rem/1.75rem Poppins, sans-serif;
+  height: 3rem;
+  width: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 9999px;
+  background-color: #0D3ADB;
+}
+
+.content-3-2 .text-caption {
+  font: 400 1rem/1.75rem Poppins, sans-serif;
+  text-align: start;
+  letter-spacing: 0.025em;
+  color: #565656;
+}
+
+.content-3-2 .btn-learn {
+  font: 600 1rem/1.5rem Poppins, sans-serif;
+  padding: 1rem 2.5rem;
+  background-color: #0D3ADB;
+  transition: 0.3s;
+  letter-spacing: 0.025em;
+  border-radius: 999px;
+}
+
+.content-3-2 .btn:hover {
+  background-color: #0958e0;
+  transition: 0.3s;
+}
+/* End Panduan */
 
 /* Start Login Page */
 .content-3-5 .btn:focus,
@@ -753,6 +815,91 @@ body footer li {
 }
 /* End Login Page */
 
+/* Start Success Register */
+.empty-3-3{
+  padding: 5rem 2rem;
+}
+
+.empty-3-3 .main-img{
+  width: 83.333333%;
+  margin-bottom: 2.5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.empty-3-3 .title-text{
+  font: 600 1.875rem/2.25rem Poppins, sans-serif;            
+  color: #16171C;
+  letter-spacing: 0.025em;
+  margin-bottom: 0.75rem;
+}
+
+.empty-3-3 .caption-text{
+  margin-bottom: 3rem;
+  color: #9C9C9C;
+  font-size: 1rem;
+  letter-spacing: 0.025em;
+  line-height: 1.75rem;
+}
+
+.empty-3-3 .btn-set{
+  font: 600 1.125rem/1.75rem Poppins, sans-serif;            
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  background-color: #0D3ADB;
+  transition: 0.3s;
+}
+
+.empty-3-3 .btn-set:hover{
+  background-color: #0958e0;
+  transition: 0.3s;
+}
+/* End Success Register */
+
+/* Start 404 */
+.empty-2-2{
+  padding: 4rem 2rem 4rem;
+}
+
+.empty-2-2 .main-img{
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 3rem;
+  width: 75%;
+}
+
+.empty-2-2 .title-text{
+  color: #272E35;
+  font: 600 1.875rem/2.25rem Poppins, sans-serif;            
+  margin-bottom: 1.25rem;
+}
+
+.empty-2-2 .title-caption{
+  color: #9C9C9C;
+  margin-bottom: 4rem;
+  letter-spacing: 0.025em;
+  line-height: 1.75rem;
+}
+
+.empty-2-2 .btn-back{
+  background-color: #0D3ADB;
+  font: 600 1.125rem/1.75rem Poppins, sans-serif;            
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+}
+
+.empty-2-2 .btn-back:hover{
+background-color: #0958e0;
+transition: 0.3s;
+}
+/* End 404 */
+
+@media(min-width: 425px){
+  .empty-2-2 .title-text{
+      font-size: 40px;
+  }
+}
+
 @media (min-width: 576px) {
   .header-3-3 .modal-item .modal-dialog {
     max-width: 95%;
@@ -779,6 +926,23 @@ body footer li {
 
   .content-3-5 .right {
     width: 58.333333%;
+  }
+
+  .empty-3-3{
+    padding: 7rem 2rem;
+  }
+
+  .empty-3-3 .main-img{
+      width: auto;
+  }
+
+  .empty-2-2{
+    padding-top: 5rem;
+  }
+
+  .empty-2-2 .main-img{
+    margin-bottom: 4rem;
+    width: auto;
   }
 }
 
@@ -843,6 +1007,10 @@ body footer li {
 
   .content-3-5 .right {
     width: 66.666667%;
+  }
+
+  .content-3-2 .title-text {
+    font: 600 2.25rem/2.5rem Poppins, sans-serif;
   }
 }
 
@@ -913,6 +1081,20 @@ body footer li {
 
   .content-3-5 .right {
     width: 75%;
+  }
+
+  .content-3-2 .img-hero {
+    width: 50%;
+    margin-bottom: 0;
+  }
+
+  .content-3-2 .right-column {
+    width: 50%;
+  }
+
+  .content-3-2 .circle {
+    margin-right: 1.25rem;
+    margin-bottom: 0;
   }
 }
 

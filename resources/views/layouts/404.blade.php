@@ -21,25 +21,27 @@
 </head>
 
 <body>
-    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FFFFFF;">
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            {{ $slot }}
+    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FAFCFF">
+        <div class="empty-2-2 container mx-auto d-flex align-items-center justify-content-center flex-column"
+            style="font-family: 'Poppins', sans-serif;">
+            <img class="main-img img-fluid" src="{{ asset('assets/images/empty-state.png') }}" alt="">
+
+            <div class="text-center w-100">
+                <h1 class="title-text">
+                    Opss! Terjadi Kesalahan
+                </h1>
+                <p class="title-caption">
+                    Halaman yang anda cari tidak ditemukan. <br class="d-sm-block d-none">Kami menyarankan anda kembali
+                    ke halaman utama.
+                </p>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('welcome') }}" class="btn btn-back d-inline-flex text-white">
+                        Back to Homepage
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
-
-    <!-- Password toggle -->
-    <script>
-        function togglePassword() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-                document.getElementById("icon-toggle").setAttribute("fill", "#0D3ADB");
-            } else {
-                x.type = "password";
-                document.getElementById("icon-toggle").setAttribute("fill", "#CACBCE");
-            }
-        }
-    </script>
 
     {{-- scripts --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
