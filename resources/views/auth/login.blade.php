@@ -69,7 +69,7 @@
                     <button class="btn btn-fill text-white d-block w-100" type="submit">
                         Masuk
                     </button>
-                    <a class="btn btn-border btn-google-login d-block w-100" href="#">
+                    <a href="{{ route('login.google') }}" class="btn btn-border btn-google-login d-block w-100" href="#">
                         <img src="{{ asset('./assets/images/ic_google.svg') }}" class="icon" alt=""> Masuk dengan Google
                     </a>
                 </form>

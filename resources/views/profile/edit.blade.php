@@ -34,6 +34,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body class="font-sans antialiased">
@@ -58,13 +59,13 @@
                             @include('profile.partials.update-profile-information-form')
                         </div>
                     </div>
-        
+
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <div class="max-w-xl">
                             @include('profile.partials.update-password-form')
                         </div>
                     </div>
-        
+
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <div class="max-w-xl">
                             @include('profile.partials.delete-user-form')
@@ -74,6 +75,20 @@
             </div>
         </main>
     </div>
+
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var preview = document.getElementById('preview-avatar');
+                preview.src = reader.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
 </body>
 
 </html>

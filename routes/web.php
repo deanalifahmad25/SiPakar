@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginGoogleController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,10 @@ Route::get('/panduan', function () {
 Route::get('/missing-page', [MissingPageController::class, 'index'])->name('missing-page');
 
 // Users
+//socialite routes
+Route::get('sign-in-google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
+
 Route::get('/success-register', function () {
     return view('layouts.success-register');
 })->middleware(['auth', 'verified'])->name('success-register');

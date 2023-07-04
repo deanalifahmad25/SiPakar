@@ -455,6 +455,7 @@ body .img-explore img {
 /* Start Section Steps */
 body .content {
   background: #FAFCFF;
+  margin-left: 0;
 }
 
 body .content .content {
@@ -498,6 +499,7 @@ body .content .content .benefits .rectangle {
 
 body .content .content .benefits .rectangle img {
   margin-top: 50px;
+  margin-left: 95px;
 }
 
 body .content .content .benefits .rectangle .headline-benefit {
@@ -529,7 +531,7 @@ body .content .content .button-header {
 }
 
 body .content .content .button-header .btn-started {
-  width: 150px;
+  width: 160px;
   height: 50px;
   padding-top: 11px !important;
   background: #0D3ADB !important;
@@ -547,7 +549,7 @@ body .content .content .button-header .btn-started:hover {
 }
 
 body .content .content .button-header .btn-story {
-  width: 150px;
+  width: 160px;
   height: 50px;
   padding-top: 11px !important;
   border: 1px solid #0D3ADB;
@@ -917,6 +919,16 @@ transition: 0.3s;
 @media(min-width: 425px){
   .empty-2-2 .title-text{
       font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  body .content .content .benefits .rectangle img {
+    margin-left: 80px !important;
+  }
+
+  body .content .content .button-header .btn-story {
+    margin-top: 20px;
   }
 }
 

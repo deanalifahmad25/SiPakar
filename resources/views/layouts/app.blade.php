@@ -89,7 +89,13 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                    <img src="{{ asset('assets/images/avatar.jpg') }}" alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                    @if (Auth::user()->avatar !== null)
+                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
+                            class="avatar" />
+                    @else
+                        <img src="{{ asset('assets/images/default-avatar.jpg') }}"
+                            alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                    @endif
                 </div>
             </div>
         </nav>
