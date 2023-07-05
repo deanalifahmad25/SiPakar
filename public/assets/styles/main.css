@@ -143,25 +143,18 @@
 }
 
 .header-3-3 .btn-outline:hover {
-  background-color: #0958e0;
-  border: 1px solid #0958e0;
+  font-weight: 600;
+  background-color: #0D63F5;
+  border: 1px solid #0D63F5;
   color: #ffffff;
-}
-
-.header-3-3 .btn-outline div path {
-  fill: #0D63F5;
-}
-
-.header-3-3 .btn-outline div rect {
-  stroke: #0D63F5;
+  transition: 0.3s;
 }
 
 .header-3-3 .btn-outline:hover div path {
-  fill: #ffffff;
-}
-
-.header-3-3 .btn-outline:hover div rect {
-  stroke: #ffffff;
+  fill: #0D63F5;
+  stroke:#ffffff;
+  stroke-width: 2;
+  transition: 0.3s;
 }
 
 .header-3-3 .right-column {

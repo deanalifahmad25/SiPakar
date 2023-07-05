@@ -192,16 +192,11 @@
                         <a href="{{ route('register') }}" class="btn btn-get text-white d-inline-flex">
                             Daftar Sekarang
                         </a>
-                        <a href="/" class="btn btn-outline">
+                        <a href="{{ route('panduan') }}" class="btn btn-outline">
                             <div class="d-flex align-items-center">
-                                <svg class="me-2" width="26" height="26" viewBox="0 0 26 26"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.9295 13L11.6668 10.158V15.842L15.9295 13ZM17.9175 13.2773L10.8515 17.988C10.8013 18.0214 10.743 18.0406 10.6828 18.0434C10.6225 18.0463 10.5627 18.0328 10.5095 18.0044C10.4563 17.9759 10.4119 17.9336 10.3809 17.8818C10.3499 17.8301 10.3335 17.771 10.3335 17.7107V8.28933C10.3335 8.22904 10.3499 8.16988 10.3809 8.11816C10.4119 8.06644 10.4563 8.0241 10.5095 7.99564C10.5627 7.96718 10.6225 7.95367 10.6828 7.95655C10.743 7.95943 10.8013 7.9786 10.8515 8.012L17.9175 12.7227C17.9631 12.7531 18.0006 12.7943 18.0265 12.8427C18.0524 12.8911 18.0659 12.9451 18.0659 13C18.0659 13.0549 18.0524 13.1089 18.0265 13.1573C18.0006 13.2057 17.9631 13.2469 17.9175 13.2773Z"
-                                        fill="#A6B1BE" />
-                                    <rect x="0.5" y="0.5" width="25" height="25"
-                                        rx="12.5" stroke="#A6B1BE" />
-                                </svg>
+                                <svg class="me-2" width="20" height="18" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 3.54515C9.27504 2.00127 6.99715 1.0625 4.5 1.0625C3.36043 1.0625 2.26653 1.258 1.25 1.61729V17.0548C2.26653 16.6955 3.36043 16.5 4.5 16.5C6.99715 16.5 9.27504 17.4388 11 18.9827M11 3.54515C12.725 2.00127 15.0028 1.0625 17.5 1.0625C18.6396 1.0625 19.7335 1.258 20.75 1.61729V17.0548C19.7335 16.6955 18.6396 16.5 17.5 16.5C15.0028 16.5 12.725 17.4388 11 18.9827M11 3.54515V18.9827" stroke="#0D63F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>                                  
                                 Pelajari Lebih Lanjut
                             </div>
                         </a>
@@ -240,7 +235,7 @@
                                 </div>
                                 @if (Route::has('login'))
                                     @auth
-                                        <a href="{{ url('dashboard') }}" class="btn btn-hire text-white">
+                                        <a href="{{ route('dashboard') }}" class="btn btn-hire text-white">
                                             Coba Diagnosa
                                         </a>
                                     @else
@@ -261,19 +256,19 @@
         <div class="container">
             <div class="row brand">
                 <div class="col-md-3 col-6 text-center my-md-auto">
-                    <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/Slack-Logo.png"
+                    <img src="https://cdn.worldvectorlogo.com/logos/laravel-wordmark-1.svg"
                         alt="" class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto">
-                    <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/Microsoft-Logo.png"
+                    <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5.svg"
                         alt="" class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto mt-5 mt-md-0">
-                    <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/Google-Logo.png"
+                    <img src="https://res.cloudinary.com/dk0z4ums3/image/upload/f_auto,q_auto/v1634020083/aloweb_assets/logo-header.png"
                         alt="" class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto mt-5 mt-md-0">
-                    <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content10/Airbnb-Logo.png"
+                    <img src="https://cdn.worldvectorlogo.com/logos/google-2015.svg"
                         alt="" class="img-fluid">
                 </div>
             </div>
@@ -370,40 +365,40 @@
                     <div class="row benefits">
                         <div class="col-md-4 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content-Job/benefit-job-1.png"
+                                <img src="{{ asset('assets/icons/Icon Steps 1.png') }}"
                                     alt="benefits-1" class="img-fluid">
                                 <div class="headline-benefit">
                                     Buat Akun
                                 </div>
                                 <div class="subheadline-benefit mt-2">
-                                    Get yourself ready and join <br class="d-none d-md-block">
-                                    our great adventures
+                                    Lakukan registrasi akun <br class="d-none d-md-block">
+                                    untuk mendapat akses
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mt-5 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content-Job/benefit-job-2.png"
+                                <img src="{{ asset('assets/icons/Icon Steps 2.png') }}"
                                     alt="benefits-1" class="img-fluid">
                                 <div class="headline-benefit">
                                     Lakukan Diagnosa
                                 </div>
                                 <div class="subheadline-benefit mt-2">
-                                    Answer the question that we’ve <br class="d-none d-md-block">
-                                    prepared for your career
+                                    Jawab pertanyaan diagnosa <br class="d-none d-md-block">
+                                    yang telah kami siapkan
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4 mt-5 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="https://api.elements.buildwithangga.com/storage/files/2/assets/Content/Content-Job/benefit-job-3.png"
+                                <img src="{{ asset('assets/icons/Icon Steps 3.png') }}"
                                     alt="benefits-1" class="img-fluid">
                                 <div class="headline-benefit">
                                     Lihat Hasil
                                 </div>
                                 <div class="subheadline-benefit mt-2">
-                                    We will setup the meeting with <br class="d-none d-md-block">
-                                    your dream companies
+                                    Hasil diagnosa dapat digunakan <br class="d-none d-md-block">
+                                    untuk konsultasi lebih lanjut
                                 </div>
                             </div>
                         </div>

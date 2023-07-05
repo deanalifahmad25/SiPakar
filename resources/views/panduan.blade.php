@@ -148,11 +148,11 @@
                                     </x-slot>
                                 </x-dropdown>
                                 @if (Auth::user()->avatar !== null)
-                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
-                                        class="avatar" />
+                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                        alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
                                 @else
-                                    <img src="{{ asset('assets/images/default-avatar.jpg') }}" alt="{{ Auth::user()->name }} Photo Profile"
-                                        class="avatar" />
+                                    <img src="{{ asset('assets/images/default-avatar.jpg') }}"
+                                        alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
                                 @endif
                             </div>
                         @else
@@ -255,7 +255,13 @@
                             </p>
                         </li>
                     </ul>
-                    <a class="btn btn-learn text-white">Mulai Diagnosa</a>
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ route('dashboard') }}" class="btn btn-learn text-white">Mulai Diagnosa</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-learn text-white">Mulai Diagnosa</a>
+                        @endauth
+                    @endif
                 </div>
             </div>
         </div>
