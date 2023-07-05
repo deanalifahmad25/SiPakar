@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class LoginGoogleController extends Controller
 {
+    use HasRoles;
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -26,6 +30,9 @@ class LoginGoogleController extends Controller
         ];
 
         $user = User::firstOrCreate(['email' => $data['email']], $data);
+
+        $userRole = Role::firstOrCreate(['name' => 'user']);
+        $user->assignRole($userRole);
 
         Auth::login($user, true);
 
