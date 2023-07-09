@@ -25,7 +25,7 @@ class LoginGoogleController extends Controller
             'name' => $callback->getName(),
             'email' => $callback->getEmail(),
             'password' => $callback->id,
-            'avatar' => $callback->getAvatar(),
+            'avatar' =>  $callback->getAvatar(),
             'email_verified_at' => date('Y-m-d H:i:s', time()),
         ];
 
@@ -33,6 +33,12 @@ class LoginGoogleController extends Controller
 
         $userRole = Role::firstOrCreate(['name' => 'user']);
         $user->assignRole($userRole);
+
+        $users = User::where('email', $data['email']);
+
+        $updateData = $users->update([
+            'is_login_google' => true
+        ]);
 
         Auth::login($user, true);
 

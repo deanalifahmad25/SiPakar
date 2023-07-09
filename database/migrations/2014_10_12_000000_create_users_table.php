@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('city')->nullable();
             $table->string('occupation')->nullable();
+            $table->boolean('is_login_google')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
