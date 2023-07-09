@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginGoogleController;
+use App\Http\Controllers\MissingPageController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -31,13 +32,22 @@ Route::get('/missing-page', [MissingPageController::class, 'index'])->name('miss
 Route::get('sign-in-google', [LoginGoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [LoginGoogleController::class, 'handleGoogleCallback']);
 
-Route::get('/success-register', function () {
-    return view('layouts.success-register');
-})->middleware(['auth', 'verified'])->name('success-register');
+Route::middleware('auth', 'verified', 'user')->group(function () {
+    Route::get('/success-register', function () {
+        return view('layouts.success-register');
+    })->name('success-register');
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('user.dashboard');
+    })->name('dashboard');
+});
+
+// Admin
+Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -45,4 +55,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
