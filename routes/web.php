@@ -47,6 +47,22 @@ Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function (
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+
+    Route::get('/admin/data-penyakit', function () {
+        return view('admin.data-penyakit');
+    })->name('data-penyakit');
+
+    Route::get('/admin/data-gejala', function () {
+        return view('admin.data-gejala');
+    })->name('data-gejala');
+
+    Route::get('/admin/basis-informasi', function () {
+        return view('admin.basis-informasi');
+    })->name('basis-informasi');
+
+    Route::get('/admin/aturan', function () {
+        return view('admin.aturan');
+    })->name('aturan');
 });
 
 Route::middleware('auth')->group(function () {
