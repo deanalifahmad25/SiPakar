@@ -11,26 +11,38 @@
     <div class="pt-2 d-flex flex-column gap-5">
         <div class="menu p-0">
             <p>Utama</p>
+            @if (Auth::user()->hasRole('admin'))
+            <x-side-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                <i class="icon ic-stats"></i>
+                {{ __('Dashboard') }}
+            </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <i class="icon ic-trans"></i>
+                    {{ __('Data Penyakit') }}
+                </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <i class="icon ic-trans"></i>
+                    {{ __('Data Gejala') }}
+                </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <i class="icon ic-account"></i>
+                    {{ __('Basis Informasi') }}
+                </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <i class="icon ic-help"></i>
+                    {{ __('Aturan') }}
+                </x-side-link>
+            @else
             <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 <i class="icon ic-stats"></i>
                 {{ __('Dashboard') }}
             </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
-                <i class="icon ic-trans"></i>
-                {{ __('Data Penyakit') }}
-            </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
-                <i class="icon ic-trans"></i>
-                {{ __('Data Gejala') }}
-            </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
-                <i class="icon ic-account"></i>
-                {{ __('Basis Informasi') }}
-            </x-side-link>
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
-                <i class="icon ic-help"></i>
-                {{ __('Aturan') }}
-            </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                    <i class="icon ic-account"></i>
+                    {{ __('Diagnosa') }}
+                </x-side-link>
+            @endif
+
         </div>
         <div class="menu">
             <p>Lainnya</p>

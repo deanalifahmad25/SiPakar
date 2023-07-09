@@ -16,7 +16,7 @@
                         @endif
                     </div>
                 </div>
-                {{-- <div class="col-xl-4 col-12 card balance">
+                <div class="col-xl-4 col-12 card balance">
                     <p>My Balance</p>
                     <h2>$90,500,000</h2>
                     <div>
@@ -28,9 +28,9 @@
                         <canvas id="chart-budget" style="height: 226px; width: 100%">
                         </canvas>
                     </div>
-                </div> --}}
+                </div>
             </div>
-            {{-- <div class="row px-1 d-flex justify-content-between">
+            <div class="row px-1 d-flex justify-content-between">
                 <div class="col-xl-6 col-12 p-0 mb-5 mb-xl-0 revenue">
                     <h5>Revenue Past 6 Months</h5>
                     <div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             <div class="row px-1">
                 <h5>Riwayat Diagnosa</h5>
@@ -114,11 +114,11 @@
                                     <td>Temporibus</td>
                                 </tr>
                             </tbody>
-        
+
                             <caption>
                                 Captions of the table
                             </caption>
-        
+
                         </table>
                     </div>
                 </div>

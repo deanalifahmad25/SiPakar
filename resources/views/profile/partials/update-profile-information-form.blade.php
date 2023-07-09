@@ -22,9 +22,15 @@
             <div class="flex items-center mt-2">
                 <div class="mr-4">
                     <label for="avatar" class="cursor-pointer">
-                        <img id="preview-avatar"
-                            src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/images/default-avatar.jpg') }}"
-                            alt="Avatar" class="w-16 h-16 rounded-full">
+                        @if (Auth::user()->is_login_google == true)
+                            <img id="preview-avatar"
+                                src="{{ Auth::user()->avatar ? Auth::user()->avatar : asset('assets/images/default-avatar.jpg') }}"
+                                alt="Avatar" class="w-16 h-16 rounded-full">
+                        @else
+                            <img id="preview-avatar"
+                                src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('assets/images/default-avatar.jpg') }}"
+                                alt="Avatar" class="w-16 h-16 rounded-full">
+                        @endif
                     </label>
                 </div>
                 <div>

@@ -63,7 +63,7 @@
                             <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
                                     <li class="nav-item active position-relative">
-                                        <a href="/" class="nav-link main" style="color: #0D63F5;">Beranda</a>
+                                        <a href="/" class="nav-link" style="color: #0D63F5;">Beranda</a>
                                     </li>
                                     <li class="nav-item position-relative">
                                         <a href="{{ route('panduan') }}" class="nav-link">Panduan</a>
@@ -95,7 +95,7 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item active position-relative">
-                            <a href="/" class="nav-link main=" style="color: #0D63F5;">Beranda</a>
+                            <a href="/" class="nav-link" style="color: #0D63F5;">Beranda</a>
                         </li>
                         <li class="nav-item position-relative">
                             <a href="{{ route('panduan') }}" class="nav-link">Panduan</a>
@@ -128,9 +128,15 @@
                                     </x-slot>
 
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('dashboard')">
-                                            {{ __('Dashboard') }}
-                                        </x-dropdown-link>
+                                        @if (Auth::user()->hasRole('admin'))
+                                            <x-dropdown-link :href="route('admin.dashboard')">
+                                                {{ __('Dashboard') }}
+                                            </x-dropdown-link>
+                                        @else
+                                            <x-dropdown-link :href="route('dashboard')">
+                                                {{ __('Dashboard') }}
+                                            </x-dropdown-link>
+                                        @endif
                                         <x-dropdown-link :href="route('profile.edit')">
                                             {{ __('Profil') }}
                                         </x-dropdown-link>
@@ -148,11 +154,16 @@
                                     </x-slot>
                                 </x-dropdown>
                                 @if (Auth::user()->avatar !== null)
-                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
-                                        class="avatar" />
+                                    @if (Auth::user()->is_login_google == true)
+                                        <img src="{{ Auth::user()->avatar }}"
+                                            alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                                    @else
+                                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                            alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                                    @endif
                                 @else
-                                    <img src="{{ asset('assets/images/default-avatar.jpg') }}" alt="{{ Auth::user()->name }} Photo Profile"
-                                        class="avatar" />
+                                    <img src="{{ asset('assets/images/default-avatar.jpg') }}"
+                                        alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
                                 @endif
                             </div>
                         @else
@@ -194,9 +205,13 @@
                         </a>
                         <a href="{{ route('panduan') }}" class="btn btn-outline">
                             <div class="d-flex align-items-center">
-                                <svg class="me-2" width="20" height="18" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11 3.54515C9.27504 2.00127 6.99715 1.0625 4.5 1.0625C3.36043 1.0625 2.26653 1.258 1.25 1.61729V17.0548C2.26653 16.6955 3.36043 16.5 4.5 16.5C6.99715 16.5 9.27504 17.4388 11 18.9827M11 3.54515C12.725 2.00127 15.0028 1.0625 17.5 1.0625C18.6396 1.0625 19.7335 1.258 20.75 1.61729V17.0548C19.7335 16.6955 18.6396 16.5 17.5 16.5C15.0028 16.5 12.725 17.4388 11 18.9827M11 3.54515V18.9827" stroke="#0D63F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>                                  
+                                <svg class="me-2" width="20" height="18" viewBox="0 0 22 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11 3.54515C9.27504 2.00127 6.99715 1.0625 4.5 1.0625C3.36043 1.0625 2.26653 1.258 1.25 1.61729V17.0548C2.26653 16.6955 3.36043 16.5 4.5 16.5C6.99715 16.5 9.27504 17.4388 11 18.9827M11 3.54515C12.725 2.00127 15.0028 1.0625 17.5 1.0625C18.6396 1.0625 19.7335 1.258 20.75 1.61729V17.0548C19.7335 16.6955 18.6396 16.5 17.5 16.5C15.0028 16.5 12.725 17.4388 11 18.9827M11 3.54515V18.9827"
+                                        stroke="#0D63F5" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
                                 Pelajari Lebih Lanjut
                             </div>
                         </a>
@@ -256,20 +271,20 @@
         <div class="container">
             <div class="row brand">
                 <div class="col-md-3 col-6 text-center my-md-auto">
-                    <img src="https://cdn.worldvectorlogo.com/logos/laravel-wordmark-1.svg"
-                        alt="" class="img-fluid">
+                    <img src="https://cdn.worldvectorlogo.com/logos/laravel-wordmark-1.svg" alt=""
+                        class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto">
-                    <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5.svg"
-                        alt="" class="img-fluid">
+                    <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5.svg" alt=""
+                        class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto mt-5 mt-md-0">
                     <img src="https://res.cloudinary.com/dk0z4ums3/image/upload/f_auto,q_auto/v1634020083/aloweb_assets/logo-header.png"
                         alt="" class="img-fluid">
                 </div>
                 <div class="col-md-3 col-6 text-center my-md-auto mt-5 mt-md-0">
-                    <img src="https://cdn.worldvectorlogo.com/logos/google-2015.svg"
-                        alt="" class="img-fluid">
+                    <img src="https://cdn.worldvectorlogo.com/logos/google-2015.svg" alt=""
+                        class="img-fluid">
                 </div>
             </div>
         </div>
@@ -365,8 +380,8 @@
                     <div class="row benefits">
                         <div class="col-md-4 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="{{ asset('assets/icons/Icon Steps 1.png') }}"
-                                    alt="benefits-1" class="img-fluid">
+                                <img src="{{ asset('assets/icons/Icon Steps 1.png') }}" alt="benefits-1"
+                                    class="img-fluid">
                                 <div class="headline-benefit">
                                     Buat Akun
                                 </div>
@@ -378,8 +393,8 @@
                         </div>
                         <div class="col-md-4 mt-5 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="{{ asset('assets/icons/Icon Steps 2.png') }}"
-                                    alt="benefits-1" class="img-fluid">
+                                <img src="{{ asset('assets/icons/Icon Steps 2.png') }}" alt="benefits-1"
+                                    class="img-fluid">
                                 <div class="headline-benefit">
                                     Lakukan Diagnosa
                                 </div>
@@ -391,8 +406,8 @@
                         </div>
                         <div class="col-md-4 mt-5 mt-md-0">
                             <div class="rectangle mx-auto px-1">
-                                <img src="{{ asset('assets/icons/Icon Steps 3.png') }}"
-                                    alt="benefits-1" class="img-fluid">
+                                <img src="{{ asset('assets/icons/Icon Steps 3.png') }}" alt="benefits-1"
+                                    class="img-fluid">
                                 <div class="headline-benefit">
                                     Lihat Hasil
                                 </div>

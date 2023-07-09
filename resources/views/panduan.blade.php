@@ -62,11 +62,11 @@
                             </div>
                             <div class="modal-body" style="padding: 2rem; padding-top: 0; padding-bottom: 0">
                                 <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
-                                    <li class="nav-item active position-relative">
+                                    <li class="nav-item position-relative">
                                         <a href="/" class="nav-link">Beranda</a>
                                     </li>
-                                    <li class="nav-item position-relative">
-                                        <a href="" class="nav-link main" style="color: #0D63F5;">Panduan</a>
+                                    <li class="nav-item active position-relative">
+                                        <a href="" class="nav-link" style="color: #0D63F5;">Panduan</a>
                                     </li>
                                     <li class="nav-item position-relative">
                                         <a href="https://deanalifahmad.github.io/" class="nav-link">Kontak</a>
@@ -94,11 +94,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                        <li class="nav-item active position-relative">
+                        <li class="nav-item position-relative">
                             <a href="/" class="nav-link">Beranda</a>
                         </li>
-                        <li class="nav-item position-relative">
-                            <a href="" class="nav-link main=" style="color: #0D63F5;">Panduan</a>
+                        <li class="nav-item active position-relative">
+                            <a href="" class="nav-link" style="color: #0D63F5;">Panduan</a>
                         </li>
                         <li class="nav-item position-relative">
                             <a href="https://deanalifahmad.github.io/" class="nav-link" href="#">Kontak</a>
@@ -128,9 +128,15 @@
                                     </x-slot>
 
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('dashboard')">
-                                            {{ __('Dashboard') }}
-                                        </x-dropdown-link>
+                                        @if (Auth::user()->hasRole('admin'))
+                                            <x-dropdown-link :href="route('admin.dashboard')">
+                                                {{ __('Dashboard') }}
+                                            </x-dropdown-link>
+                                        @else
+                                            <x-dropdown-link :href="route('dashboard')">
+                                                {{ __('Dashboard') }}
+                                            </x-dropdown-link>
+                                        @endif
                                         <x-dropdown-link :href="route('profile.edit')">
                                             {{ __('Profil') }}
                                         </x-dropdown-link>
@@ -148,8 +154,13 @@
                                     </x-slot>
                                 </x-dropdown>
                                 @if (Auth::user()->avatar !== null)
-                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
-                                        alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                                    @if (Auth::user()->is_login_google == true)
+                                        <img src="{{ Auth::user()->avatar }}"
+                                            alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                                    @else
+                                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                            alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                                    @endif
                                 @else
                                     <img src="{{ asset('assets/images/default-avatar.jpg') }}"
                                         alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />

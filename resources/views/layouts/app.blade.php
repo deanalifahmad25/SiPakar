@@ -27,7 +27,7 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('assets/styles/styles.css') }}" type="text/css" media="screen" />
 
     <!-- CDN Fontawesome -->
     <script src="https://kit.fontawesome.com/32f82e1dca.js" crossorigin="anonymous"></script>
@@ -90,8 +90,13 @@
                         </x-slot>
                     </x-dropdown>
                     @if (Auth::user()->avatar !== null)
-                        <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
-                            class="avatar" />
+                        @if (Auth::user()->is_login_google == true)
+                            <img src="{{ (Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
+                                class="avatar" />
+                        @else
+                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}"
+                                alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
+                        @endif
                     @else
                         <img src="{{ asset('assets/images/default-avatar.jpg') }}"
                             alt="{{ Auth::user()->name }} Photo Profile" class="avatar" />
@@ -113,8 +118,8 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-    <script src="assets/js/donut_chart.js"></script>
-    <script src="assets/js/line_chart.js"></script>
+    <script src="{{ asset('assets/js/donut_chart.js') }}"></script>
+    <script src="{{ asset('assets/js/line_chart.js') }}"></script>
 
     <script>
         $(document).ready(function() {
