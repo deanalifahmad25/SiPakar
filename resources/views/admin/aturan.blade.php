@@ -11,12 +11,12 @@
                                     <th scope="col" style="border-radius: 10px 0 0 0;">Kode Aturan</th>
                                     <th scope="col">Keputusan</th>
                                     <th scope="col">Penyakit</th>
-                                    <th scope="col">Kriteria  Gejala</th>
+                                    <th scope="col">Kriteria Gejala</th>
                                     <th scope="col" style="border-radius: 0 10px 0 0;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $aturan)
+                                @forelse ($data as $aturan)
                                     <tr>
                                         <th scope="row">{{ $aturan->kode_aturan }}</th>
                                         <th>{{ $aturan->keputusan }}</td>
@@ -29,7 +29,12 @@
                                                     class="material-icons">&#xE872;</i></a>
                                         </th>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan='6' style="text-align: center; font-weight: bold;">Tidak Ada Data
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
 
                             <caption>

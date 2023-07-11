@@ -15,7 +15,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $gejala)
+                                @forelse ($data as $gejala)
                                     <tr>
                                         <th scope="row">{{ $gejala->kode_gejala }}</th>
                                         <th>{{ $gejala->nama_gejala }}</td>
@@ -27,7 +27,12 @@
                                                     class="material-icons">&#xE872;</i></a>
                                         </th>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan='6' style="text-align: center; font-weight: bold;">Tidak Ada Data
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
 
                             <caption>

@@ -15,7 +15,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $penyakit)
+                                @forelse ($data as $penyakit)
                                     <tr>
                                         <th scope="row">{{ $penyakit->kode_penyakit }}</th>
                                         <th>{{ $penyakit->nama_penyakit }}</td>
@@ -27,11 +27,16 @@
                                                     class="material-icons">&#xE872;</i></a>
                                         </th>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan='6' style="text-align: center; font-weight: bold;">Tidak Ada Data
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
 
                             <caption>
-                                    Tabel Data Penyakit
+                                Tabel Data Penyakit
                             </caption>
 
                         </table>
