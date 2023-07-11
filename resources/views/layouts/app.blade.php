@@ -31,6 +31,8 @@
 
     <!-- CDN Fontawesome -->
     <script src="https://kit.fontawesome.com/32f82e1dca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -91,7 +93,7 @@
                     </x-dropdown>
                     @if (Auth::user()->avatar !== null)
                         @if (Auth::user()->is_login_google == true)
-                            <img src="{{ (Auth::user()->avatar) }}" alt="{{ Auth::user()->name }} Photo Profile"
+                            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }} Photo Profile"
                                 class="avatar" />
                         @else
                             <img src="{{ asset('storage/' . Auth::user()->avatar) }}"

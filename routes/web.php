@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AturanController;
+use App\Http\Controllers\Admin\GejalaController;
+use App\Http\Controllers\Admin\PenyakitController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\MissingPageController;
@@ -48,21 +51,15 @@ Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function (
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::get('/admin/data-penyakit', function () {
-        return view('admin.data-penyakit');
-    })->name('data-penyakit');
+    Route::get('/admin/data-penyakit', [PenyakitController::class, 'penyakit'])->name('data-penyakit');
 
-    Route::get('/admin/data-gejala', function () {
-        return view('admin.data-gejala');
-    })->name('data-gejala');
+    Route::get('/admin/data-gejala', [GejalaController::class, 'gejala'])->name('data-gejala');
 
     Route::get('/admin/basis-informasi', function () {
         return view('admin.basis-informasi');
     })->name('basis-informasi');
 
-    Route::get('/admin/aturan', function () {
-        return view('admin.aturan');
-    })->name('aturan');
+    Route::get('/admin/aturan', [AturanController::class, 'aturan'])->name('aturan');
 });
 
 Route::middleware('auth')->group(function () {

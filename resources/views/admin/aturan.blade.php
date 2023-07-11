@@ -5,38 +5,35 @@
                 <h5>Aturan</h5>
                 <div class="wrapper">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover table-borderless ">
+                        <table class="table table-striped table-hover ">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Lorem</th>
-                                    <th scope="col">Ipsum</th>
-                                    <th scope="col">Dolor</th>
+                                    <th scope="col" style="border-radius: 10px 0 0 0;">Kode Aturan</th>
+                                    <th scope="col">Keputusan</th>
+                                    <th scope="col">Penyakit</th>
+                                    <th scope="col">Kriteria  Gejala</th>
+                                    <th scope="col" style="border-radius: 0 10px 0 0;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Sit</td>
-                                    <td>Amet</td>
-                                    <td>Consectetur</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Adipisicing</td>
-                                    <td>Elit</td>
-                                    <td>Sint</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Hic</td>
-                                    <td>Fugiat</td>
-                                    <td>Temporibus</td>
-                                </tr>
+                                @foreach ($data as $aturan)
+                                    <tr>
+                                        <th scope="row">{{ $aturan->kode_aturan }}</th>
+                                        <th>{{ $aturan->keputusan }}</td>
+                                        <th>{{ $aturan->penyakit }}</td>
+                                        <td style="text-align: center">{{ $aturan->kriteria_gejala }}</td>
+                                        <th>
+                                            <a href="" class="edit" title="Edit" data-toggle="tooltip"><i
+                                                    class="material-icons">&#xE254;</i></a>
+                                            <a href="" class="delete" title="Delete" data-toggle="tooltip"><i
+                                                    class="material-icons">&#xE872;</i></a>
+                                        </th>
+                                    </tr>
+                                @endforeach
                             </tbody>
 
                             <caption>
-                                Captions of the table
+                                Tabel Data Aturan
                             </caption>
 
                         </table>

@@ -163,3 +163,33 @@ header p {
   font-weight: 500;
   color: #3547ac;
 }
+
+table {
+  border-radius: 20px !important;
+}
+
+table thead {
+  background-color: #0D63F5;
+  color: #ffffff;
+}
+
+table th {
+  text-align: center;
+}
+
+table tbody {
+  border: transparent;
+}
+
+table td {
+  max-width: 400px;
+  text-align: justify;
+}
+
+table th a.edit {
+  color: #FFC107 !important;
+  }
+
+table th a.delete {
+  color: #E34724 !important;
+}

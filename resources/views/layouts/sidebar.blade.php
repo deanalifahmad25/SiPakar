@@ -12,10 +12,10 @@
         <div class="menu p-0">
             <p>Utama</p>
             @if (Auth::user()->hasRole('admin'))
-            <x-side-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                <i class="icon ic-stats"></i>
-                {{ __('Dashboard') }}
-            </x-side-link>
+                <x-side-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    <i class="icon ic-stats"></i>
+                    {{ __('Dashboard') }}
+                </x-side-link>
                 <x-side-link :href="route('admin.data-penyakit')" :active="request()->routeIs('admin.data-penyakit')">
                     <i class="icon ic-trans"></i>
                     {{ __('Data Penyakit') }}
@@ -33,10 +33,10 @@
                     {{ __('Aturan') }}
                 </x-side-link>
             @else
-            <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                <i class="icon ic-stats"></i>
-                {{ __('Dashboard') }}
-            </x-side-link>
+                <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <i class="icon ic-stats"></i>
+                    {{ __('Dashboard') }}
+                </x-side-link>
                 <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
                     <i class="icon ic-account"></i>
                     {{ __('Diagnosa') }}
