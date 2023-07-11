@@ -19,7 +19,8 @@ class Gejala extends Model
     protected $fillable = [
         'kode_gejala',
         'nama_gejala',
-        'deskripsi_gejala'
+        'deskripsi_gejala',
+        'pertanyaan'
     ];
 
     protected static function boot() {

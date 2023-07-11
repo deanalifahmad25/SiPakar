@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kode_penyakit')->unique();
             $table->string('nama_penyakit');
             $table->text('deskripsi_penyakit');
+            $table->longText('solusi_penyakit');
             $table->softDeletes();
             $table->timestamps();
         });

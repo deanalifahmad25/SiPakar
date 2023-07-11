@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kode_gejala')->unique();
             $table->string('nama_gejala');
             $table->text('deskripsi_gejala');
+            $table->text('pertanyaan');
             $table->softDeletes();
             $table->timestamps();
         });
