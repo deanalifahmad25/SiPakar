@@ -909,7 +909,7 @@ transition: 0.3s;
 }
 
 .empty-2-2 .diagnosa {
-  max-width: 800px;
+  max-width: 1200px;
   padding: 40px;
   border-radius: 30px;
   background: #ffffff;
@@ -936,6 +936,11 @@ transition: 0.3s;
 
   body .content .content .button-header .btn-story {
     margin-top: 20px;
+  }
+
+  .empty-2-2 .diagnosa {
+    max-width: 360px;
+    padding: 10px;
   }
 }
 

@@ -26,6 +26,28 @@
             font-size: 18px;
             font-weight: 500 !important;
         }
+
+        .empty-2-2 table {
+            border-radius: 20px !important;
+        }
+
+        .empty-2-2 table thead {
+            background-color: #0D63F5;
+            color: #ffffff;
+        }
+
+        .empty-2-2 table th {
+            text-align: center;
+        }
+
+        .empty-2-2 table tbody {
+            border: transparent;
+        }
+
+        .empty-2-2 table td {
+            max-width: 400px;
+            text-align: justify;
+        }
     </style>
 
     <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FAFCFF">
@@ -43,11 +65,28 @@
                     @if ($penyakitBFS)
                         <p class="tittle-caption">Berdasarkan metode Breadth First Search, anda kemungkinan menderita:
                         </p>
-                        <ul>
-                            @foreach ($penyakitBFS as $penyakit)
-                                <li>{{ $penyakit->nama_penyakit }}</li>
-                            @endforeach
-                        </ul>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="border-radius: 10px 0 0 0;">Kode Penyakit</th>
+                                        <th scope="col">Nama Penyakit</th>
+                                        <th scope="col">Deskripsi Penyakit</th>
+                                        <th scope="col" style="border-radius: 0 10px 0 0;">Solusi Penyakit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($penyakitBFS as $penyakit)
+                                        <tr>
+                                            <th scope="row">{{ $penyakit->kode_penyakit }}</th>
+                                            <th>{{ $penyakit->nama_penyakit }}</td>
+                                            <td>{{ $penyakit->deskripsi_penyakit }}</td>
+                                            <td>{{ $penyakit->solusi_penyakit }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endif
                 @endif
             </div>
@@ -57,13 +96,30 @@
                     <p>Tidak ditemukan penyakit berdasarkan gejala yang diinputkan.</p>
                 @else
                     @if ($penyakitBestFS)
-                        <p class="tittle-caption">Berdasarkan metode Best First Search, anda kemungkinan menderita:
+                        <p class="tittle-caption">Berdasarkan metode Breadth First Search, anda kemungkinan menderita:
                         </p>
-                        <ul>
-                            @foreach ($penyakitBestFS as $penyakit)
-                                <li>{{ $penyakit->nama_penyakit }}</li>
-                            @endforeach
-                        </ul>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="border-radius: 10px 0 0 0;">Kode Penyakit</th>
+                                        <th scope="col">Nama Penyakit</th>
+                                        <th scope="col">Deskripsi Penyakit</th>
+                                        <th scope="col" style="border-radius: 0 10px 0 0;">Solusi Penyakit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($penyakitBestFS as $penyakit)
+                                        <tr>
+                                            <th scope="row">{{ $penyakit->kode_penyakit }}</th>
+                                            <th>{{ $penyakit->nama_penyakit }}</td>
+                                            <td>{{ $penyakit->deskripsi_penyakit }}</td>
+                                            <td>{{ $penyakit->solusi_penyakit }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endif
                 @endif
             </div>
