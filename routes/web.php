@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AturanController;
 use App\Http\Controllers\Admin\GejalaController;
 use App\Http\Controllers\Admin\PenyakitController;
+use App\Http\Controllers\DiagnosaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\MissingPageController;
@@ -43,6 +44,9 @@ Route::middleware('auth', 'verified', 'user')->group(function () {
     Route::get('/dashboard', function () {
         return view('user.dashboard');
     })->name('dashboard');
+
+    Route::get('/diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa');
+    Route::post('/hasil-diagnosa', [DiagnosaController::class, 'diagnosa'])->name('process.diagnosa');
 });
 
 // Admin

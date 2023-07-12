@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -46,6 +47,12 @@ class ProfileController extends Controller
             }
         
             $user->avatar = $path;
+
+            $users = User::where('id', $user->id);
+
+            $updateData = $users->update([
+                'is_login_google' => false
+            ]);
         }
 
         $user->save();

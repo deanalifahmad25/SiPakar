@@ -907,6 +907,20 @@ body footer li {
 background-color: #0958e0;
 transition: 0.3s;
 }
+
+.empty-2-2 .diagnosa {
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow:  12px 12px 44px #d5d5d5, 22px 22px 44px #ffffff;
+}
+
+.empty-2-2 .form-check-label{
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+
+}
 /* End 404 */
 
 @media(min-width: 425px){

@@ -250,7 +250,7 @@
                                 </div>
                                 @if (Route::has('login'))
                                     @auth
-                                        <a href="{{ route('dashboard') }}" class="btn btn-hire text-white">
+                                        <a href="{{ route('diagnosa') }}" class="btn btn-hire text-white">
                                             Coba Diagnosa
                                         </a>
                                     @else
@@ -348,7 +348,7 @@
                 @if (Route::has('login'))
                     @auth
                         <div class="col-md-3 mt-md-3">
-                            <a href="{{ route('dashboard') }}" class="btn btn-get px-5 py-3 mt-0">Mulai Diagnosa</a>
+                            <a href="{{ route('diagnosa') }}" class="btn btn-get px-5 py-3 mt-0">Mulai Diagnosa</a>
                         </div>
                     @else
                         <div class="col-md-3 mt-md-3">
@@ -421,7 +421,7 @@
                     <div class="button-header">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ route('dashboard') }}" class="btn btn-started">Coba Diagnosa</a>
+                                <a href="{{ route('diagnosa') }}" class="btn btn-started">Coba Diagnosa</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-started">Coba Diagnosa</a>
                             @endauth

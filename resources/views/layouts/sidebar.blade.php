@@ -37,7 +37,7 @@
                     <i class="icon ic-stats"></i>
                     {{ __('Dashboard') }}
                 </x-side-link>
-                <x-side-link :href="route('dashboard')" :active="request()->routeIs('')">
+                <x-side-link :href="route('diagnosa')" :active="request()->routeIs('diagnosa')">
                     <i class="icon ic-account"></i>
                     {{ __('Diagnosa') }}
                 </x-side-link>
@@ -46,7 +46,7 @@
         </div>
         <div class="menu">
             <p>Lainnya</p>
-            <x-side-link :href="route('profile.edit')" :active="request()->routeIs('')">
+            <x-side-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 <i class="icon ic-settings"></i>
                 {{ __('Profil') }}
             </x-side-link>

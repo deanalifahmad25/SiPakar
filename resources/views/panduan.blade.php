@@ -268,7 +268,7 @@
                     </ul>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn btn-learn text-white">Mulai Diagnosa</a>
+                            <a href="{{ route('diagnosa') }}" class="btn btn-learn text-white">Mulai Diagnosa</a>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-learn text-white">Mulai Diagnosa</a>
                         @endauth
