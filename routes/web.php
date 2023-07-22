@@ -49,21 +49,39 @@ Route::middleware('auth', 'verified', 'user')->group(function () {
     Route::post('/hasil-diagnosa', [DiagnosaController::class, 'diagnosa'])->name('process.diagnosa');
 });
 
-// Admin
-Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function () {
+    // Admin
+    Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::get('/admin/data-penyakit', [PenyakitController::class, 'penyakit'])->name('data-penyakit');
+    // Data Penyakit
+    Route::get('/admin/data-penyakit', [PenyakitController::class, 'index'])->name('data-penyakit');
+    Route::get('/admin/data-penyakit/create', [PenyakitController::class, 'create'])->name('create.data-penyakit');
+    Route::post('/admin/data-penyakit/store', [PenyakitController::class, 'store'])->name('store.data-penyakit');
+    Route::get('/admin/data-penyakit/edit/{id}', [PenyakitController::class, 'edit'])->name('edit.data-penyakit');
+    Route::put('/admin/data-penyakit/update/{id}', [PenyakitController::class, 'update'])->name('update.data-penyakit');
+    Route::delete('/admin/data-penyakit/delete/{id}', [PenyakitController::class, 'destroy'])->name('delete.data-penyakit');
 
-    Route::get('/admin/data-gejala', [GejalaController::class, 'gejala'])->name('data-gejala');
+    //Data Gejala
+    Route::get('/admin/data-gejala', [GejalaController::class, 'index'])->name('data-gejala');
+    Route::get('/admin/data-gejala/create', [GejalaController::class, 'create'])->name('create.data-gejala');
+    Route::post('/admin/data-gejala/store', [GejalaController::class, 'store'])->name('store.data-gejala');
+    Route::get('/admin/data-gejala/edit/{id}', [GejalaController::class, 'edit'])->name('edit.data-gejala');
+    Route::put('/admin/data-gejala/update/{id}', [GejalaController::class, 'update'])->name('update.data-gejala');
+    Route::delete('/admin/data-gejala/delete/{id}', [GejalaController::class, 'destroy'])->name('delete.data-gejala');
+
+    // Data Aturan
+    Route::get('/admin/aturan', [AturanController::class, 'index'])->name('aturan');
+    Route::get('/admin/aturan/create', [AturanController::class, 'create'])->name('create.aturan');
+    Route::post('/admin/aturan/store', [AturanController::class, 'store'])->name('store.aturan');
+    Route::get('/admin/aturan/edit/{id}', [AturanController::class, 'edit'])->name('edit.aturan');
+    Route::put('/admin/aturan/update/{id}', [AturanController::class, 'update'])->name('update.aturan');
+    Route::delete('/admin/aturan/delete/{id}', [AturanController::class, 'destroy'])->name('delete.aturan');
 
     Route::get('/admin/basis-informasi', function () {
         return view('admin.basis-informasi');
     })->name('basis-informasi');
-
-    Route::get('/admin/aturan', [AturanController::class, 'aturan'])->name('aturan');
 });
 
 Route::middleware('auth')->group(function () {

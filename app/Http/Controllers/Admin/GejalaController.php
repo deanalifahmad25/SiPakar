@@ -8,11 +8,48 @@ use App\Models\Gejala;
 
 class GejalaController extends Controller
 {
-    public function gejala() {
+    public function index() {
         $data = Gejala::all();
 
-        return view('admin.data-gejala', compact('data'));
+        return view('gejala.index', compact('data'));
     }
 
+    public function create()
+    {
+        return view('gejala.create');
+    }
 
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        Gejala::create($data);
+
+        return redirect()->route('admin.data-gejala');
+    }
+
+    public function edit($id)
+    {
+        $gejala = Gejala::where('id', $id)->first();
+
+        return view('gejala.edit', compact('gejala'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->except(['_token', '_method']);
+
+        Gejala::where('id', $id)->update($data);
+
+        return redirect()->route('admin.data-gejala');
+    }
+
+    public function destroy($id)
+    {
+        $gejala = Gejala::where('id', $id)->first();
+
+        $gejala->delete();
+
+        return redirect()->route('admin.data-gejala');
+    }
 }

@@ -21,11 +21,11 @@
 </head>
 
 <body>
-    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FAFCFF">
+    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FFFFFF">
         <div class="empty-2-2 container mx-auto d-flex align-items-center justify-content-center flex-column"
             style="font-family: 'Poppins', sans-serif;">
 
-            <div class="row mb-4">
+            <div class="row mb-2">
                 <h1 class="title-text">Diagnosa Penyakit Tifus</h1>
             </div>
 

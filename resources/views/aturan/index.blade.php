@@ -4,6 +4,7 @@
             <div class="row px-1">
                 <h5>Aturan</h5>
                 <div class="wrapper">
+                    <a href="{{ route('admin.create.aturan') }}" class="btn btn-started mb-2">Tambah</a>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover ">
                             <thead>
@@ -23,10 +24,17 @@
                                         <th>{{ $aturan->penyakit }}</td>
                                         <td style="text-align: center">{{ $aturan->kriteria_gejala }}</td>
                                         <th>
-                                            <a href="" class="edit" title="Edit" data-toggle="tooltip"><i
+                                            <a href="{{ route('admin.edit.aturan', $aturan->id) }}" class="edit"
+                                                title="Edit" data-toggle="tooltip"><i
                                                     class="material-icons">&#xE254;</i></a>
-                                            <a href="" class="delete" title="Delete" data-toggle="tooltip"><i
-                                                    class="material-icons">&#xE872;</i></a>
+                                            <form method="post"
+                                                action="{{ route('admin.delete.aturan', $aturan->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="delete" title="Delete"
+                                                    data-toggle="tooltip"><i
+                                                        class="material-icons">&#xE872;</i></button>
+                                            </form>
                                         </th>
                                     </tr>
                                 @empty

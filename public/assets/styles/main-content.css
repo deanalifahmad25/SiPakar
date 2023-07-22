@@ -21,7 +21,8 @@ header {
 header h3 {
   margin: 0;
   color: #0D63F5;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
   line-height: 42px;
 }
 
@@ -87,6 +88,23 @@ header p {
   box-shadow:  12px 12px 44px #d5d5d5, 22px 22px 44px #ffffff;
 }
 
+.wrapper .btn-started {
+  width: 120px;
+  height: 50px;
+  padding-top: 11px !important;
+  background: #0D63F5 !important;
+  border: 1px solid #0D63F5;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.wrapper .btn-started:hover {
+  background: #0D3ADB !important;
+  transition: 0.3s;
+}
+
 .debit .number {
   margin: 0;
   font-size: 22px;
@@ -111,6 +129,7 @@ header p {
 .balance h2 {
   margin: 0;
   color: #0D63F5;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -123,6 +142,7 @@ header p {
 
 .information h5 {
   color: #0D63F5;
+  font-size: 22px;
   font-weight: 600;
   margin-bottom: 30px;
 }
@@ -190,6 +210,6 @@ table th a.edit {
   color: #FFC107 !important;
   }
 
-table th a.delete {
+table th button.delete {
   color: #E34724 !important;
 }
