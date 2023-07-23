@@ -5,16 +5,28 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('assets/images/Logo SiPakar.png') }}" alt="Logo" width="100px" />
-                    </a>
+                    @if (Auth::user()->hasRole('admin'))
+                        <a href="{{ route('admin.dashboard') }}">
+                            <img src="{{ asset('assets/images/Logo SiPakar.png') }}" alt="Logo" width="100px" />
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard') }}">
+                            <img src="{{ asset('assets/images/Logo SiPakar.png') }}" alt="Logo" width="100px" />
+                        </a>
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @if (Auth::user()->hasRole('admin'))
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endif
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Profil') }}
                     </x-nav-link>

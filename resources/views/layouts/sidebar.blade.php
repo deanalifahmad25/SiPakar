@@ -16,21 +16,21 @@
                     <i class="icon ic-stats"></i>
                     {{ __('Dashboard') }}
                 </x-side-link>
-                <x-side-link :href="route('admin.data-penyakit')" :active="request()->routeIs('admin.data-penyakit')">
-                    <i class="icon ic-trans"></i>
-                    {{ __('Data Penyakit') }}
+                <x-side-link :href="route('admin.aturan')" :active="request()->routeIs('admin.aturan')">
+                    <i class="icon ic-help"></i>
+                    {{ __('Aturan') }}
                 </x-side-link>
                 <x-side-link :href="route('admin.data-gejala')" :active="request()->routeIs('admin.data-gejala')">
                     <i class="icon ic-trans"></i>
                     {{ __('Data Gejala') }}
                 </x-side-link>
-                <x-side-link :href="route('admin.basis-informasi')" :active="request()->routeIs('admin.basis-informasi')">
-                    <i class="icon ic-account"></i>
-                    {{ __('Basis Informasi') }}
+                <x-side-link :href="route('admin.data-penyakit')" :active="request()->routeIs('admin.data-penyakit')">
+                    <i class="icon ic-trans"></i>
+                    {{ __('Data Penyakit') }}
                 </x-side-link>
-                <x-side-link :href="route('admin.aturan')" :active="request()->routeIs('admin.aturan')">
-                    <i class="icon ic-help"></i>
-                    {{ __('Aturan') }}
+                <x-side-link :href="route('admin.hasil-diagnosa')" :active="request()->routeIs('admin.hasil-diagnosa')">
+                    <i class="icon ic-account"></i>
+                    {{ __('Hasil Diagnosa') }}
                 </x-side-link>
             @else
                 <x-side-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">

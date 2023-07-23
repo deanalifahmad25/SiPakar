@@ -3,7 +3,11 @@
 use App\Http\Controllers\Admin\AturanController;
 use App\Http\Controllers\Admin\GejalaController;
 use App\Http\Controllers\Admin\PenyakitController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailDiagnosaController;
 use App\Http\Controllers\DiagnosaController;
+use App\Http\Controllers\Admin\HasilDiagnosaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginGoogleController;
 use App\Http\Controllers\MissingPageController;
@@ -41,19 +45,15 @@ Route::middleware('auth', 'verified', 'user')->group(function () {
         return view('layouts.success-register');
     })->name('success-register');
 
-    Route::get('/dashboard', function () {
-        return view('user.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa');
     Route::post('/hasil-diagnosa', [DiagnosaController::class, 'diagnosa'])->name('process.diagnosa');
 });
 
-    // Admin
-    Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+// Admin
+Route::middleware('auth', 'verified', 'admin')->name('admin.')->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
     // Data Penyakit
     Route::get('/admin/data-penyakit', [PenyakitController::class, 'index'])->name('data-penyakit');
@@ -79,12 +79,15 @@ Route::middleware('auth', 'verified', 'user')->group(function () {
     Route::put('/admin/aturan/update/{id}', [AturanController::class, 'update'])->name('update.aturan');
     Route::delete('/admin/aturan/delete/{id}', [AturanController::class, 'destroy'])->name('delete.aturan');
 
-    Route::get('/admin/basis-informasi', function () {
-        return view('admin.basis-informasi');
-    })->name('basis-informasi');
+    // Data Hasil Diagnosa Pengguna
+    Route::get('/admin/hasil-diagnosa', [HasilDiagnosaController::class, 'index'])->name('hasil-diagnosa');
+    Route::delete('/admin/hasil-diagnosa/delete/{id}', [HasilDiagnosaController::class, 'destroy'])->name('delete.hasil-diagnosa');
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/detail-diagnosa/{id}', [DetailDiagnosaController::class, 'index'])->name('detail-diagnosa');
+    Route::get('/detail-diagnosa/print', [DetailDiagnosaController::class, 'print'])->name('print.detail-diagnosa');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

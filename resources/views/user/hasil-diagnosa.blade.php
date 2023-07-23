@@ -50,20 +50,21 @@
         }
     </style>
 
-    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FAFCFF">
+    <section class="h-100 w-100" style="box-sizing: border-box; background-color: #FFFFFF">
         <div class="empty-2-2 container mx-auto d-flex align-items-center justify-content-center flex-column"
             style="font-family: 'Poppins', sans-serif;">
 
-            <div class="row mb-4">
+            <div class="row mb-2">
                 <h1 class="title-text">Hasil Diagnosa</h1>
             </div>
 
             <div class="row diagnosa mb-4 mx-2">
-                @if (!$penyakitBFS)
+                @if (!$penyakitBreadthFS)
                     <p>Tidak ditemukan penyakit berdasarkan gejala yang diinputkan.</p>
                 @else
-                    @if ($penyakitBFS)
-                        <p class="tittle-caption">Berdasarkan metode Breadth First Search, anda kemungkinan menderita:
+                    @if ($penyakitBreadthFS)
+                        <p class="tittle-caption">Berdasarkan metode Breadth First Search, sistem mendiagnosa
+                            kemungkinan:
                         </p>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover ">
@@ -76,14 +77,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($penyakitBFS as $penyakit)
-                                        <tr>
-                                            <th scope="row">{{ $penyakit->kode_penyakit }}</th>
-                                            <th>{{ $penyakit->nama_penyakit }}</td>
-                                            <td>{{ $penyakit->deskripsi_penyakit }}</td>
-                                            <td>{{ $penyakit->solusi_penyakit }}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <th scope="row">{{ $penyakitBreadthFS->kode_penyakit }}</th>
+                                        <th>{{ $penyakitBreadthFS->nama_penyakit }}</td>
+                                        <td>{{ $penyakitBreadthFS->deskripsi_penyakit }}</td>
+                                        <td>{{ $penyakitBreadthFS->solusi_penyakit }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -91,15 +90,15 @@
                 @endif
             </div>
 
-            <div class="row diagnosa mx-2">
+            <div class="row diagnosa mx-2 mb-4">
                 @if (!$penyakitBestFS)
                     <p>Tidak ditemukan penyakit berdasarkan gejala yang diinputkan.</p>
                 @else
                     @if ($penyakitBestFS)
-                        <p class="tittle-caption">Berdasarkan metode Breadth First Search, anda kemungkinan menderita:
+                        <p class="tittle-caption">Berdasarkan metode Best First Search, sistem mendiagnosa kemungkinan:
                         </p>
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover ">
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col" style="border-radius: 10px 0 0 0;">Kode Penyakit</th>
@@ -109,14 +108,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($penyakitBestFS as $penyakit)
-                                        <tr>
-                                            <th scope="row">{{ $penyakit->kode_penyakit }}</th>
-                                            <th>{{ $penyakit->nama_penyakit }}</td>
-                                            <td>{{ $penyakit->deskripsi_penyakit }}</td>
-                                            <td>{{ $penyakit->solusi_penyakit }}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <th scope="row">{{ $penyakitBestFS->kode_penyakit }}</th>
+                                        <th>{{ $penyakitBestFS->nama_penyakit }}</td>
+                                        <td>{{ $penyakitBestFS->deskripsi_penyakit }}</td>
+                                        <td>{{ $penyakitBestFS->solusi_penyakit }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -124,31 +121,10 @@
                 @endif
             </div>
 
-            {{-- <div class="row diagnosa">
-                @if (!$penyakitBFS && !$penyakitBestFS)
-                    <p>Tidak ditemukan penyakit berdasarkan gejala yang diinputkan.</p>
-                @else
-                    @if ($penyakitBFS)
-                        <p class="tittle-caption">Berdasarkan Metode Breadth First Search, anda di diagnosa menderita:
-                        </p>
-                        <ul class="mb-5">
-                            @foreach ($penyakitBFS as $penyakit)
-                                <li>{{ $penyakit->nama_penyakit }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                    @if ($penyakitBestFS)
-                        <p class="tittle-caption">Berdasarkan Metode Best First Search, anda di diagnosa menderita:</p>
-                        <ul>
-                            @foreach ($penyakitBestFS as $penyakit)
-                                <li>{{ $penyakit->nama_penyakit }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                @endif
-            </div> --}}
-
+            <div class="d-flex flex-sm-row flex-column align-items-center mx-auto mx-lg-0 justify-content-center gap-3">
+                <a href="{{ route('dashboard') }}" class="btn btn-back text-white">Kembali</a>
+                <a href="{{ route('diagnosa') }}" class="btn btn-back text-white">Diagnosa Ulang</a>
+            </div>
         </div>
     </section>
 

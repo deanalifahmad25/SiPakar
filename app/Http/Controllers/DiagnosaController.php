@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Aturan;
 use App\Models\Gejala;
 use App\Models\Penyakit;
+use App\Models\UserDiagnosa;
 
 class DiagnosaController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $gejala = Gejala::all();
 
         return view('user.diagnosa', compact('gejala'));
@@ -20,16 +20,36 @@ class DiagnosaController extends Controller
     {
         $inputGejala = $request->input('gejala');
 
-        $penyakitBFS = $this->getPenyakitByGejalaBFS($inputGejala);
+        if (!$inputGejala) {
+            return redirect()->back();
+        }
+
+        $penyakitBreadthFS = $this->getPenyakitByGejalaBreadthFS($inputGejala);
         $penyakitBestFS = $this->getPenyakitByGejalaBestFS($inputGejala);
 
-        return view('user.hasil-diagnosa', compact('penyakitBFS', 'penyakitBestFS'));
+        if ($penyakitBreadthFS && $penyakitBestFS) {
+            if ($penyakitBreadthFS->kode_penyakit == $penyakitBestFS->kode_penyakit) {
+                UserDiagnosa::create([
+                    'kode_penyakit' => $penyakitBreadthFS->kode_penyakit
+                ]);
+            } else {
+                UserDiagnosa::create([
+                    'kode_penyakit' => $penyakitBreadthFS->kode_penyakit
+                ]);
+
+                UserDiagnosa::create([
+                    'kode_penyakit' => $penyakitBestFS->kode_penyakit
+                ]);
+            }
+        }
+
+        return view('user.hasil-diagnosa', compact('penyakitBreadthFS', 'penyakitBestFS'));
     }
 
-    private function getPenyakitByGejalaBFS($gejala)
-    {
-        $penyakit = [];
+    private function getPenyakitByGejalaBreadthFS($gejala) {
+        $penyakit = null;
         $antrian = collect(['K001', 'K002']); // Antrian untuk penyakit
+        $solusi = []; // Array untuk menyimpan solusi yang ditemukan
 
         while (!$antrian->isEmpty()) {
             $keputusan = $antrian->shift(); // Ambil penyakit pertama dari antrian
@@ -41,7 +61,14 @@ class DiagnosaController extends Controller
 
                 // Jika semua kriteria gejala cocok dengan input gejala
                 if (count($intersect) == count($kriteriaGejala)) {
-                    $penyakit[] = Penyakit::where('nama_penyakit', $aturan->penyakit)->first();
+                    $penyakitObj = Penyakit::where('nama_penyakit', $aturan->penyakit)->first();
+                    if ($penyakitObj) {
+                        // Jika belum ada solusi yang ditemukan, tambahkan penyakit sebagai solusi
+                        // Jika sudah ada solusi, periksa langkahnya dan pilih yang langkahnya lebih minimal
+                        if (empty($solusi) || $penyakitObj->langkah < $solusi[0]->langkah) {
+                            $solusi = [$penyakitObj];
+                        }
+                    }
                 }
 
                 // Jika penyakit belum ada dalam antrian, tambahkan ke antrian
@@ -51,14 +78,18 @@ class DiagnosaController extends Controller
             }
         }
 
+        if (!empty($solusi)) {
+            $penyakit = $solusi[0];
+        }
+
         return $penyakit;
     }
 
-    private function getPenyakitByGejalaBestFS($gejala)
-    {
-        $penyakit = [];
+    private function getPenyakitByGejalaBestFS($gejala) {
+        $penyakit = null;
         $antrian = collect(['K001', 'K002']); // Antrian untuk penyakit
         $nilaiHeuristik = []; // Array untuk menyimpan nilai heuristik penyakit
+        $maxNilaiHeuristik = 0; // Inisialisasi nilai heuristik tertinggi
 
         while (!$antrian->isEmpty()) {
             // Mengurutkan antrian berdasarkan nilai heuristik
@@ -75,28 +106,26 @@ class DiagnosaController extends Controller
 
                 // Jika semua kriteria gejala cocok dengan input gejala
                 if (count($intersect) == count($kriteriaGejala)) {
-                    $penyakit[] = Penyakit::where('nama_penyakit', $aturan->penyakit)->first();
+                    $penyakitObj = Penyakit::where('nama_penyakit', $aturan->penyakit)->first();
+                    if ($penyakitObj) {
+                        $jumlahCocok = count($intersect); // Jumlah gejala cocok
+                        $nilaiHeuristik[$aturan->penyakit] = ($jumlahCocok / count($gejala)) * 100; // Menghitung nilai heuristik berdasarkan rumus (Jumlah Gejala Cocok / Jumlah Total Gejala) * 100
+
+                        // Memperbarui penyakit dengan nilai heuristik tertinggi
+                        if (!isset($maxNilaiHeuristik) || $nilaiHeuristik[$aturan->penyakit] > $maxNilaiHeuristik) {
+                            $penyakit = $penyakitObj;
+                            $maxNilaiHeuristik = $nilaiHeuristik[$aturan->penyakit];
+                        }
+                    }
                 }
 
                 // Jika penyakit belum ada dalam antrian, tambahkan ke antrian
                 if (!in_array($aturan->penyakit, $antrian->toArray())) {
                     $antrian->push($aturan->penyakit);
-
-                    // Perhitungan nilai heuristik
-                    $nilaiHeuristik[$aturan->penyakit] = $this->hitungNilaiHeuristik($gejala, $kriteriaGejala);
                 }
             }
         }
 
         return $penyakit;
-    }
-
-    private function hitungNilaiHeuristik($gejala, $kriteriaGejala)
-    {
-        // Menghitung jumlah gejala yang cocok dengan input gejala
-        $jumlahCocok = count(array_intersect($gejala, $kriteriaGejala));
-
-        // Mengembalikan jumlah gejala yang cocok sebagai nilai heuristik
-        return $jumlahCocok;
     }
 }
