@@ -206,6 +206,10 @@ table td {
   text-align: justify;
 }
 
+table th button.view {
+  color: #0D63F5 !important;
+}
+
 table th a.edit {
   color: #FFC107 !important;
   }

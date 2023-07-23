@@ -231,19 +231,6 @@
                                 <span class="circle text-white d-flex align-items-center justify-content-center">
                                     3
                                 </span>
-                                Basis Informasi
-                            </h4>
-                            <p class="text-caption">
-                                Anda dapat melihat daftar informasi gejala dari<br class="d-sm-inline d-none" />
-                                penyakit tifus yang tersedia.
-                            </p>
-                        </li>
-                        <li class="list-unstyled" style="margin-bottom: 2rem">
-                            <h4
-                                class="title-caption d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
-                                <span class="circle text-white d-flex align-items-center justify-content-center">
-                                    4
-                                </span>
                                 Diagnosa
                             </h4>
                             <p class="text-caption">
@@ -255,7 +242,7 @@
                             <h4
                                 class="title-caption d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
                                 <span class="circle text-white d-flex align-items-center justify-content-center">
-                                    5
+                                    4
                                 </span>
                                 Hasil Diagnosa
                             </h4>
