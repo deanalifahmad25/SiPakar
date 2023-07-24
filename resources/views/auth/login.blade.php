@@ -60,17 +60,17 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
 
-                    <div class="d-flex justify-content-end" style="margin-top: 0.75rem">
+                    {{-- <div class="d-flex justify-content-end" style="margin-top: 0.75rem">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="forgot-password fst-italic">Lupa
                                 Password?</a>
                         @endif
-                    </div>
+                    </div> --}}
                     <button class="btn btn-fill text-white d-block w-100" type="submit">
                         Masuk
                     </button>
                     <a href="{{ route('login.google') }}" class="btn btn-border btn-google-login d-block w-100" href="#">
-                        <img src="{{ asset('./assets/images/ic_google.svg') }}" class="icon" alt=""> Masuk dengan Google
+                        <img src="{{ asset('./assets/images/ic_google.svg') }}" class="icon" alt=""> Masuk/Daftar
                     </a>
                 </form>
 

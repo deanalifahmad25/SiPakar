@@ -230,8 +230,8 @@
                                 <div class="d-flex align-items-center" style="margin-bottom: 1.25rem">
                                     <div>
                                         <img style="margin-right: 1rem"
-                                            src="{{ asset('./assets/images/icon sipakar 70x70.png') }}"
-                                            alt="" />
+                                            src="{{ asset('./assets/images/Logo Klinik.png') }}"
+                                            alt="" width="70px"/>
                                     </div>
                                     <div class="text-start">
                                         <p class="card-name">Klinik Charina Medistra</p>
