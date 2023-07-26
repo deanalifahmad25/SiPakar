@@ -22,6 +22,7 @@ class ProfileUpdateRequest extends FormRequest
             'city' => 'string', 'max:255',
             'occupation' => 'string', 'max:255',
             'avatar' => 'image|mimes:jpg,jpeg,png|max:1024',
+            'gender' => 'string', 'max:255',
         ];
     }
 }

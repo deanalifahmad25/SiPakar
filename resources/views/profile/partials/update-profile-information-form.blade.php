@@ -72,6 +72,15 @@
         </div>
 
         <div>
+            <x-input-label for="gender" :value="__('Jenis Kelamin')" />
+            <select class="form-select mt-1" name="gender" required>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('gender')" />
+        </div>
+
+        <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
                 required autocomplete="username" />
