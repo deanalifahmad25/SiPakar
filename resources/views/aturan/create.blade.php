@@ -13,7 +13,7 @@
                                     <x-input-label for="keputusan" :value="__('Keputusan')" />
                                     <select name="keputusan"
                                         class="form-select form-select-md mt-2 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
-                                        <option selected disabled>Pilih Keputusan</option>
+                                        <option disabled>Pilih Keputusan</option>
                                         @foreach ($keputusan as $option)
                                             <option value="{{ $option->kode_keputusan }}">
                                                 {{ $option->kode_keputusan }}</option>
@@ -24,7 +24,7 @@
                                     <x-input-label for="penyakit" :value="__('Penyakit')" />
                                     <select name="penyakit"
                                         class="form-select form-select-md mt-2 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
-                                        <option selected disabled>Pilih Penyakit</option>
+                                        <option disabled>Pilih Penyakit</option>
                                         @foreach ($penyakit as $option)
                                             <option value="{{ $option->nama_penyakit }}">
                                                 {{ $option->nama_penyakit }}</option>
